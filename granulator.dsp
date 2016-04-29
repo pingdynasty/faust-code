@@ -2,21 +2,21 @@ declare name "Granulator";
 declare author "Mayank Sanganeria";
 declare version "1.0";
 
+SR = 48000;
+maxN = 16;
+delayBufferSize = SR*4;
+
 // Controls
-N = hslider("grain density", 1, 1, maxN, 1);
-gLength = hslider("grain length", 0.1, 0.01, 0.5, 0.01);
-dLength = hslider("delay length", 10, 0.5, 10, 0.1);
+N = hslider("Density[OWL:PARAMETER_A]", 1, 1, maxN, 1);
+gLength = hslider("Size[OWL:PARAMETER_B]", 0.1, 0.01, 0.5, 0.01);
+dLength = hslider("Delay[OWL:PARAMETER_C]", 4, 0.5, 4, 0.1);
 
 // Globals
-SR = fconstant(int fSamplingFreq, <math.h>);
 counter = +(1)%delayLength~_; // to iterate through the delay line
-delayBufferSize = 480000;
-maxN = 64;
 
 //Granular synth variables
 grainLength = int(SR*gLength);
 delayLength = int(SR*dLength);
-
 
 //Noise Generator
 
